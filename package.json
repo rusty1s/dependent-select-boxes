@@ -1,0 +1,50 @@
+{
+  "name": "dependent-select-boxes",
+  "version": "1.0.0",
+  "description": "",
+  "keywords": [
+    "dependent select",
+    "dependent options",
+    "select boxes",
+    "dependency",
+    "js"
+  ],
+  "author": {
+    "name": "Matthias Fey",
+    "email": "matthias.fey@tu-dortmund.de",
+    "url": "http://rusty1s.github.io"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/rusty1s/dependent-select-boxes.git"
+  },
+  "license": "MIT",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "http://github.com/rusty1s/dependent-select-boxes/issues"
+  },
+  "main": "src/index.js",
+  "scripts": {
+    "compile": "webpack dist/dependent-select-boxes.js",
+    "uglify": "webpack -p dist/dependent-select-boxes.min.js",
+    "start": "npm run compile && npm run uglify",
+    "lint": "eslint src test",
+    "test": "npm run lint"
+  },
+  "devDependencies": {
+    "babel-core": "*",
+    "babel-loader": "*",
+    "babel-preset-es2015": "*",
+    "eslint": "*",
+    "eslint-config-airbnb": "*",
+    "eslint-plugin-react": "*",
+    "webpack": "*"
+  },
+  "dependencies": {}
+}
