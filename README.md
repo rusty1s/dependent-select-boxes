@@ -34,7 +34,7 @@ setDefaultOptions({
 ## Node
 
 ```js
-// npm install dependent-select-boxes
+// npm install dependent-select-boxes --save
 import DependentSelectBoxes from 'dependent-select-boxes';
 
 const dependentSelectBoxes = new DependentSelectBoxes(parent, child, options);
