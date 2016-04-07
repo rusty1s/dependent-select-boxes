@@ -1,8 +1,13 @@
 import head from 'lodash/head';
 
+/**
+ * The change event of the parent select box.
+ */
 export function onChangeParent() {
   const parentOption = this.parent.options[this.parent.selectedIndex];
 
+  // show the child options that are dependent on the
+  // current selected parent option
   this._showChildOptions(childOption => {
     if (childOption.value === '') return true;
     if (parentOption.value === '') return true;
@@ -14,6 +19,9 @@ export function onChangeParent() {
   });
 }
 
+/**
+ * The change event of the child select box.
+ */
 export function onChangeChild() {
   const childOption = this.child.options[this.child.selectedIndex];
 
