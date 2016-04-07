@@ -75,13 +75,31 @@
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
+	/**
+	 * @param {Function}
+	 * childOptionIsDependentOnParentOption(childOption, parentOption) -
+	 * Function that determines if the `childOption` should be displayed if
+	 * `parentOption` is present.
+	 */
 	var defaultOptions = {
 	  childOptionIsDependentOnParentOption: function childOptionIsDependentOnParentOption(childOption, parentOption) {
 	    return childOption.value.indexOf(parentOption.value) === 0;
 	  }
 	};
 
+	/**
+	 * Allows a child select box to change its options
+	 * dependent on its parent select box.
+	 */
+
 	var DependentSelectBoxes = function () {
+	  /**
+	   * @constructor
+	   * @param {HTMLSelectElement} parent - The parent select box.
+	   * @param {HTMLSelectElement} child - The child select box.
+	   * @param {Object} options - Specific options for this instance.
+	   */
+
 	  function DependentSelectBoxes(parent, child) {
 	    var options = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
@@ -107,8 +125,15 @@
 	    this.parent.addEventListener('change', this._onChangeParent);
 	    this.child.addEventListener('change', this._onChangeChild);
 
+	    // trigger the change event of the parent to build the initial state
 	    this._onChangeParent();
 	  }
+
+	  /**
+	   * Destroys the functionality of the select boxes and
+	   * resets the state of both.
+	   */
+
 
 	  _createClass(DependentSelectBoxes, [{
 	    key: 'destroy',
@@ -129,6 +154,14 @@
 	        delete _this[name];
 	      });
 	    }
+
+	    /**
+	     * Shows the child options that pass the filter.
+	     * @param {Function} filter - Function that takes a child option and
+	     * returns whether to show the option or not.
+	     * @private
+	     */
+
 	  }, {
 	    key: '_showChildOptions',
 	    value: function _showChildOptions(filter) {
@@ -141,6 +174,10 @@
 	        _this2.child.removeChild(child);
 	      });
 
+	      // Loop through all possible child options and check whether
+	      // to display them or not. We need to save whether the selection
+	      // of the select box needs to change. This happens if the selected
+	      // option won't get displayed in the new select box.
 	      var needToChangeSelection = true;
 	      this.childOptions.forEach(function (childOption) {
 	        if (filter(childOption)) {
@@ -153,12 +190,21 @@
 	        }
 	      });
 
+	      // select the first option in the select box if we need
+	      // to change the selection
 	      if (needToChangeSelection) {
 	        this._selectOption((0, _head2.default)(this.child.options));
 	      } else {
 	        currentSelectedOption.selected = true;
 	      }
 	    }
+
+	    /**
+	     * Selects the `option` and dispatches a change event.
+	     * @param {HTMLOptionElement} option - The option to be selected.
+	     * @private
+	     */
+
 	  }, {
 	    key: '_selectOption',
 	    value: function _selectOption(option) {
@@ -174,7 +220,7 @@
 
 	/**
 	 * Overrides the default options.
-	 * @param {object} options
+	 * @param {Object} options
 	 */
 
 
@@ -287,11 +333,16 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+	/**
+	 * The change event of the parent select box.
+	 */
 	function onChangeParent() {
 	  var _this = this;
 
 	  var parentOption = this.parent.options[this.parent.selectedIndex];
 
+	  // show the child options that are dependent on the
+	  // current selected parent option
 	  this._showChildOptions(function (childOption) {
 	    if (childOption.value === '') return true;
 	    if (parentOption.value === '') return true;
@@ -303,6 +354,9 @@
 	  });
 	}
 
+	/**
+	 * The change event of the child select box.
+	 */
 	function onChangeChild() {
 	  var _this2 = this;
 
