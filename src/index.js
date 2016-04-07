@@ -3,13 +3,29 @@ import CustomEvent from 'custom-event';
 
 import { onChangeParent, onChangeChild } from './events/change';
 
+/**
+ * @param {Function}
+ * childOptionIsDependentOnParentOption(childOption, parentOption) -
+ * Function that determines if the `childOption` should be displayed if
+ * `parentOption` is present.
+ */
 const defaultOptions = {
   childOptionIsDependentOnParentOption(childOption, parentOption) {
     return childOption.value.indexOf(parentOption.value) === 0;
   },
 };
 
+/**
+ * Allows a child select box to change its options
+ * dependent on its parent select box.
+ */
 export default class DependentSelectBoxes {
+  /**
+   * @constructor
+   * @param {HTMLSelectElement} parent - The parent select box.
+   * @param {HTMLSelectElement} child - The child select box.
+   * @param {Object} options - Specific options for this instance.
+   */
   constructor(parent, child, options = {}) {
     if (!parent || parent.tagName !== 'SELECT') {
       throw new Error('Parent element must be a select box');
@@ -31,9 +47,14 @@ export default class DependentSelectBoxes {
     this.parent.addEventListener('change', this._onChangeParent);
     this.child.addEventListener('change', this._onChangeChild);
 
+    // trigger the change event of the parent to build the initial state
     this._onChangeParent();
   }
 
+  /**
+   * Destroys the functionality of the select boxes and
+   * resets the state of both.
+   */
   destroy() {
     // remove the used event listener
     this.parent.removeEventListener('change', this._onChangeParent);
@@ -48,6 +69,12 @@ export default class DependentSelectBoxes {
     });
   }
 
+  /**
+   * Shows the child options that pass the filter.
+   * @param {Function} filter - Function that takes a child option and
+   * returns whether to show the option or not.
+   * @private
+   */
   _showChildOptions(filter) {
     const currentSelectedOption = this.child.options[this.child.selectedIndex];
 
@@ -56,6 +83,10 @@ export default class DependentSelectBoxes {
       this.child.removeChild(child);
     });
 
+    // Loop through all possible child options and check whether
+    // to display them or not. We need to save whether the selection
+    // of the select box needs to change. This happens if the selected
+    // option won't get displayed in the new select box.
     let needToChangeSelection = true;
     this.childOptions.forEach(childOption => {
       if (filter(childOption)) {
@@ -68,6 +99,8 @@ export default class DependentSelectBoxes {
       }
     });
 
+    // select the first option in the select box if we need
+    // to change the selection
     if (needToChangeSelection) {
       this._selectOption(head(this.child.options));
     } else {
@@ -75,6 +108,11 @@ export default class DependentSelectBoxes {
     }
   }
 
+  /**
+   * Selects the `option` and dispatches a change event.
+   * @param {HTMLOptionElement} option - The option to be selected.
+   * @private
+   */
   _selectOption(option) {
     if (!option || option.selected) return;
 
@@ -85,7 +123,7 @@ export default class DependentSelectBoxes {
 
 /**
  * Overrides the default options.
- * @param {object} options
+ * @param {Object} options
  */
 export function setDefaultOptions(options) {
   Object.assign(defaultOptions, options);

@@ -135,7 +135,6 @@
 	      var _this2 = this;
 
 	      var currentSelectedOption = this.child.options[this.child.selectedIndex];
-	      console.log(': ' + currentSelectedOption.value);
 
 	      // remove all options
 	      Array.from(this.child.children).forEach(function (child) {
@@ -155,7 +154,6 @@
 	      });
 
 	      if (needToChangeSelection) {
-	        console.log('change');
 	        this._selectOption((0, _head2.default)(this.child.options));
 	      } else {
 	        currentSelectedOption.selected = true;

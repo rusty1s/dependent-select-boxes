@@ -1,7 +1,7 @@
 {
   "name": "dependent-select-boxes",
   "version": "1.0.0",
-  "description": "",
+  "description": "Allows a child select box to change its options dependent on its parent select box",
   "keywords": [
     "dependent select",
     "dependent options",
