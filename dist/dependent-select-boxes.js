@@ -79,7 +79,8 @@
 	 * @param {Function}
 	 * childOptionIsDependentOnParentOption(childOption, parentOption) -
 	 * Function that determines if the `childOption` should be displayed if
-	 * `parentOption` is present.
+	 * `parentOption` is selected. Default: `true` if the value of the parent
+	 * option is a prefix of the value of the child option.
 	 */
 	var defaultOptions = {
 	  childOptionIsDependentOnParentOption: function childOptionIsDependentOnParentOption(childOption, parentOption) {
