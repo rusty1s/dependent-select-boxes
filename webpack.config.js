@@ -1,5 +1,3 @@
-'use strict';
-
 module.exports = {
   entry: [
     './src/index.js',
@@ -12,6 +10,7 @@ module.exports = {
         exclude: /node_modules/,
         query: {
           presets: ['es2015'],
+          plugins: ['transform-strict-mode'],
         },
       },
     ],
