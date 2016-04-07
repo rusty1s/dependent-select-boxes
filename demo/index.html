@@ -13,33 +13,39 @@
   <body>
     <main>
 
-      <select id="parent">
-        <option></option>
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
-        <option>D</option>
-      </select>
+      <p>
+        <label for="parent">Parent Select Box</label>
+        <select id="parent">
+          <option></option>
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+          <option>D</option>
+        </select>
+      </p>
 
-      <select id="child">
-        <option></option>
-        <option>A_1</option>
-        <option>A_2</option>
-        <option>A_3</option>
-        <option>A_4</option>
-        <option>B_1</option>
-        <option>B_2</option>
-        <option>B_3</option>
-        <option>B_4</option>
-        <option>C_1</option>
-        <option>C_2</option>
-        <option>C_3</option>
-        <option>C_4</option>
-        <option>D_1</option>
-        <option>D_2</option>
-        <option>D_3</option>
-        <option>D_4</option>
-      </select>
+      <p>
+        <label for="child">Child Select Box</label>
+        <select id="child">
+          <option></option>
+          <option>A_1</option>
+          <option>A_2</option>
+          <option>A_3</option>
+          <option>A_4</option>
+          <option>B_1</option>
+          <option>B_2</option>
+          <option>B_3</option>
+          <option>B_4</option>
+          <option>C_1</option>
+          <option>C_2</option>
+          <option>C_3</option>
+          <option>C_4</option>
+          <option>D_1</option>
+          <option>D_2</option>
+          <option>D_3</option>
+          <option>D_4</option>
+        </select>
+      </p>
 
       <script>
         new DependentSelectBoxes(document.getElementById('parent'), document.getElementById('child'));
