@@ -6,12 +6,12 @@
 
 ## Additional options
 
-You can pass in options as a second parameter. The currently supported options are:
+You can pass in options as a third parameter. The currently supported options are:
 
 * `childOptionIsDependentOnParentOption(childOption, parentOption)`:
 Function that determines if the `childOption`should be displayed if
 `parentOption` is present. Default: `true` if the value of the parent
-option is a prefix of the value of the child option.
+option is a prefix of the value of the child option, else `false`.
 
 ```js
 new DependentSelectBoxes(document.getElementById('parent'), document.getElementById('child'), {
