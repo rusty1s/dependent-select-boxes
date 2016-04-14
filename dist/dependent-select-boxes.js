@@ -81,11 +81,16 @@
 	 * Function that determines if the `childOption` should be displayed if
 	 * `parentOption` is selected. Default: `true` if the value of the parent
 	 * option is a prefix of the value of the child option.
+	 * @param {boolean} resetParentOptionOnEmptyChildOption - Resets the parent
+	 * option to an empty value if the child option changes to an empty option.
+	 * Default: `true`.
 	 */
 	var defaultOptions = {
 	  childOptionIsDependentOnParentOption: function childOptionIsDependentOnParentOption(childOption, parentOption) {
 	    return childOption.value.indexOf(parentOption.value) === 0;
-	  }
+	  },
+
+	  resetParentOptionOnEmptyChildOption: true
 	};
 
 	/**
@@ -362,6 +367,16 @@
 	  var _this2 = this;
 
 	  var childOption = this.child.options[this.child.selectedIndex];
+
+	  // reset parent option if child option is empty and we are allowed to do so
+	  if (childOption.value === '' && this.resetParentOptionOnEmptyChildOption) {
+	    var _parentOption = (0, _head2.default)(Array.from(this.parent.options).filter(function (option) {
+	      return option.value === '';
+	    }));
+
+	    this._selectOption(_parentOption);
+	    return;
+	  }
 
 	  // don't change parent select box if child option is empty
 	  if (childOption.value === '') return;

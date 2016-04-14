@@ -25,6 +25,15 @@ export function onChangeParent() {
 export function onChangeChild() {
   const childOption = this.child.options[this.child.selectedIndex];
 
+  // reset parent option if child option is empty and we are allowed to do so
+  if (childOption.value === '' && this.resetParentOptionOnEmptyChildOption) {
+    const parentOption = head(Array.from(this.parent.options)
+      .filter(option => option.value === ''));
+
+    this._selectOption(parentOption);
+    return;
+  }
+
   // don't change parent select box if child option is empty
   if (childOption.value === '') return;
 
