@@ -12,7 +12,7 @@ You can pass in options as a third parameter. The currently supported options ar
 Function that determines if the `childOption`should be displayed if
 `parentOption` is selected. Default: `true` if the value of the parent
 option is a prefix of the value of the child option, else `false`.
- * `resetParentOptionOnEmptyChildOption`:
+* `resetParentOptionOnEmptyChildOption`:
 Resets the parent option to an empty value if the child option changes
 to an empty option. Default `true`.
 
