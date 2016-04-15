@@ -151,7 +151,7 @@
 	      this.child.removeEventListener('change', this._onChangeChild);
 
 	      // make sure to show all child options
-	      this.showChildOptions(function () {
+	      this._showChildOptions(function () {
 	        return true;
 	      });
 

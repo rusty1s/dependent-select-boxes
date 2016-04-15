@@ -66,7 +66,7 @@ export default class DependentSelectBoxes {
     this.child.removeEventListener('change', this._onChangeChild);
 
     // make sure to show all child options
-    this.showChildOptions(() => true);
+    this._showChildOptions(() => true);
 
     // delete everything that is bound to `this`
     Object.keys(this).forEach(name => {

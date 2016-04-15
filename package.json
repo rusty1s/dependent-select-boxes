@@ -35,16 +35,22 @@
     "uglify": "webpack -p dist/dependent-select-boxes.min.js",
     "start": "npm run compile && npm run uglify",
     "lint": "eslint src test",
-    "test": "npm run lint"
+    "mocha": "mocha --compilers js:babel-register",
+    "test": " npm run lint & (npm start && npm run mocha)"
   },
   "devDependencies": {
     "babel-core": "*",
     "babel-loader": "*",
     "babel-plugin-transform-strict-mode": "*",
     "babel-preset-es2015": "*",
+    "babel-register": "^6.7.2",
+    "chai": "*",
     "eslint": "*",
     "eslint-config-airbnb": "*",
     "eslint-plugin-react": "*",
+    "jsdom": "*",
+    "mocha": "*",
+    "mocha-jsdom": "*",
     "webpack": "*"
   },
   "dependencies": {
