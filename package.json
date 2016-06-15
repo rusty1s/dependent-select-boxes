@@ -1,8 +1,14 @@
 {
-  "name": "flexbox-animation",
+  "name": "dependent-select-boxes",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "Allows a child select box to change its options dependent on its parent select box",
+  "keywords": [
+    "dependent select",
+    "dependent options",
+    "select boxes",
+    "dependency",
+    "js"
+  ],
   "author": {
     "name": "Matthias Fey",
     "email": "matthias.fey@tu-dortmund.de",
@@ -10,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/rusty1s/flexbox-animation.git"
+    "url": "git://github.com/rusty1s/dependent-select-boxes.git"
   },
   "license": "MIT",
   "licenses": [
@@ -21,12 +27,12 @@
   ],
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "http://github.com/rusty1s/flexbox-animation/issues"
+    "url": "http://github.com/rusty1s/dependent-select-boxes/issues"
   },
   "main": "src/index.js",
   "scripts": {
-    "compile": "webpack dist/flexbox-animation.js",
-    "uglify": "webpack -p dist/flexbox-animation.min.js",
+    "compile": "webpack dist/dependent-select-boxes.js",
+    "uglify": "webpack -p dist/dependent-select-boxes.min.js",
     "start": "npm run compile && npm run uglify",
     "lint": "eslint src test",
     "mocha": "mocha --compilers js:babel-register",
@@ -37,15 +43,18 @@
     "babel-loader": "*",
     "babel-plugin-transform-strict-mode": "*",
     "babel-preset-es2015": "*",
-    "babel-register": "*",
+    "babel-register": "^6.7.2",
     "chai": "*",
     "eslint": "*",
     "eslint-config-airbnb": "*",
-    "eslint-plugin-import": "*",
     "eslint-plugin-react": "*",
     "jsdom": "*",
     "mocha": "*",
     "mocha-jsdom": "*",
     "webpack": "*"
+  },
+  "dependencies": {
+    "custom-event": "^1.0.0",
+    "lodash": "^4.8.2"
   }
 }
