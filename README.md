@@ -2,7 +2,7 @@
 
 `dependent-select-boxes` allows a child select box to change its options dependent on its parent select box.
 
-[Demo](http://rusty1s.github.io/dependent-select-boxes)
+[Demo](http://rusty1s.github.io/dependent-select-boxes/demo)
 
 ## Additional options
 
